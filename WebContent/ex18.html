@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>sample27</title>
+<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+$(function(){
+	setTimeout(() => {
+		$("#p2").text( "가나다라마바사아자차카타라하" );
+		$("#p3").text("<strong>밥은 먹고 다니냐?</strong>"); //적용 안됨 text라서..
+		// <strong>밥은 먹고 다니냐?</strong> -> &lt;string&gt;밥은먹고다니냐?&lt;/strong&gt; 로 바뀌어서 들어가게됨.
+	
+		console.log($("#p4").text());
+		console.log($("#p5").text()); //태그 무시하고 내용만 가져옴
+	}, 1000);
+	});
+</script>
+</head>
+<body>
+
+	<!--
+	 &lt; == < 
+	 &gt; == >
+	 &amp; == &
+	 &nbsp; == space (띄어쓰기)
+	 -->
+
+	<p id="p1"> &lt; abcd &gt; &amp; &nbsp; ㅋㅋㅋ &nbsp;</p>
+	<hr>
+	<p id="p2"> 안녕안녕</p>
+	<hr>
+	<p id="p3"></p>
+	<hr>
+	<p id="p4">
+		p4입니다.	
+	</p>
+	<p id="p5">
+		<em>p5입니다.</em>	
+	</p>
+	
+</body>
+</html>
