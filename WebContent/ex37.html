@@ -6,30 +6,64 @@
 <script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
 <script type="text/javascript">
 
-var images = [ 
-	"국화:Chrysanthemum.jpg", 
-	"사막:Desert.jpg", 
-	"수국:Hydrangeas.jpg", 
-	"해파리:Jellyfish.jpg", 
-	"코알라:Koala.jpg", 
-	"등대:Lighthouse.jpg", 
-	"펭귄:Penguins.jpg", 
-	"툴립:Tulips.jpg" ];
+var ImagesViewer = {
+		
+	 $_img:null,
+	 $_button:null,
+		
+	_images :[
+		"국화:Chrysanthemum.jpg", 
+		"사막:Desert.jpg", 
+		"수국:Hydrangeas.jpg", 
+		"해파리:Jellyfish.jpg", 
+		"코알라:Koala.jpg", 
+		"등대:Lighthouse.jpg", 
+		"펭귄:Penguins.jpg", 
+		"툴립:Tulips.jpg" ],
+		
+	_changeImage:function(){
+			var result = Math.floor( Math.random() * (this._images.length-1)  ) + 1;
+			var input = this._images[result].split(":");
+	 		console.log(input);
+			$_img.attr({
+				src:"images/"+input[1],
+				alt:input[0]
+			});
+	},
+	_onbuttonClicked: function(){
+		this._changeImage();
+	},
+	
+	_onImgDBLClickedImage: function(){
+		alert($(this).attr("alt"));
+	},
+		
+	init: function(){
+		var $img = $(".img-viewer p img");
+		var $button =$(".img-viewer button");
+		$button.click(this._onbuttonClicked.bind(this));
+		$img.dblclick(this._onImgDBLClickedImage.bind(this));
+		this._$img = $img;
+		this._$button = $button;
+	}
+	
+		
+}
+
 
 $(function(){
 
-	$("button").click(function(){
-		// 랜덤 변수 
-		var result = Math.floor( Math.random() * (images.length-1)  ) + 1;
-	});
+	ImagesViewer.init();
 	
 });
 </script>
 </head>
 <body>
+<div class="img-viewer">
 	<button>화면을 변경</button>
-	<p>
-		<img src="images/Desert.jpg" alt="사막" />
+	<p style="width:500px; border:2px solid #999; padding:5px 5px 0px 5px">
+		<img style="width:500px" src="images/Desert.jpg" alt="사막"/>
 	</p>
+</div>
 </body>
 </html>
