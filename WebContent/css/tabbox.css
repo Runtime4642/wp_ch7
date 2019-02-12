@@ -38,3 +38,10 @@ body{
 	   line-height:200px;
 	   text-align: center;	
 }
+
+.tab-view p{
+	display:none;
+}
+.tab-view #view-1{
+	display:block;
+}
