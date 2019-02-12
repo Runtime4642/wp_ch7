@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>리스트를 이용한 메뉴 만들기</title>
+<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+<link rel="stylesheet" type="text/css" href="css/tabbox.css"/>
+
+
+
+
+<script>
+var TabSelect ={
+	
+	init : function(){
+		
+		//클릭이벤트 등록
+		$('#tab li').click(this.changeMenu);
+		
+	},
+	
+	changeMenu: function(){
+		
+		var $viewTab = $('#'+$(this).attr("data-vid"));
+		
+		
+		//현재 보여지고 있는 tab 찾기
+		$('.tab-box p:visible').css("display","none");
+		$('.tab-box #tab .selected').attr({
+			class:""
+		});
+		
+		$(this).attr({
+			class:"selected"
+		});
+		
+		console.log($viewTab);
+		$viewTab.css({
+			display:"block",
+		});
+		//매소드로 부를때는
+		//$viewTab.show();
+	}
+	
+	
+		
+		
+}
+
+$(function(){
+
+	TabSelect.init();
+	
+});
+
+
+</script>
+</head>
+<body>
+<div class="tab-box">
+	<ul id="tab">
+        <li data-vid="view-1" class="selected">메뉴 1</li>
+        <li data-vid="view-2">메뉴 2</li>
+        <li data-vid="view-3">메뉴 3</li>
+        <li data-vid="view-4">메뉴 4</li>
+        <li data-vid="view-5">메뉴 5</li>
+    </ul>
+    <div class="tab-view">
+		<p id="view-1" style="display:show">
+				탭뷰 1입니다.
+		</p>
+		<p id="view-2" style="display:none">
+				탭뷰 2입니다.
+		</p>
+		<p id="view-3" style="display:none">
+				탭뷰 3입니다.
+		</p>
+		<p id="view-4" style="display:none">
+				탭뷰 4입니다.
+		</p>
+		<p id="view-5" style="display:none">
+				탭뷰 5입니다.
+		</p>
+
+
+    </div>
+</div>    
+</body>
+</html>
