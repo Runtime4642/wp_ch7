@@ -10,7 +10,6 @@ var ImagesViewer = {
 		
 	 $_img:null,
 	 $_button:null,
-		
 	_images :[
 		"국화:Chrysanthemum.jpg", 
 		"사막:Desert.jpg", 
@@ -22,13 +21,17 @@ var ImagesViewer = {
 		"툴립:Tulips.jpg" ],
 		
 	_changeImage:function(){
+			console.log(this);
 			var result = Math.floor( Math.random() * (this._images.length-1)  ) + 1;
 			var input = this._images[result].split(":");
-	 		console.log(input);
-			$_img.attr({
+	 		
+	 		
+			this.$_img.attr({
 				src:"images/"+input[1],
 				alt:input[0]
 			});
+			
+			
 	},
 	_onbuttonClicked: function(){
 		this._changeImage();
@@ -41,10 +44,13 @@ var ImagesViewer = {
 	init: function(){
 		var $img = $(".img-viewer p img");
 		var $button =$(".img-viewer button");
+
+		this.$_img = $img;
+		this.$_button = $button;
+		
 		$button.click(this._onbuttonClicked.bind(this));
 		$img.dblclick(this._onImgDBLClickedImage.bind(this));
-		this._$img = $img;
-		this._$button = $button;
+		
 	}
 	
 		
